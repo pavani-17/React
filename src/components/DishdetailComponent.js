@@ -37,7 +37,7 @@ class Dishdetail extends Component
                     const k = p.split(" ");
                     console.log(k);
                     return (
-                        <div>
+                        <div className="container">
                         <ul key={comment.id} className="list-unstyled">
                             <div className="row">
                                 <p>{comment.comment}</p>
