@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function RenderLeader(leader)
 {
     return(
-        <div class="row">
+        <div className="row">
             <Media>
                 <Media left middle>
                     <Media object src={leader.image} alt={leader.name}/>
