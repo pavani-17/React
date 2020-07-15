@@ -12,7 +12,7 @@ import {addComment, fetchDishes} from '../redux/ActionCreator';
 
 const mapDispatchToProps = dispatch => ({
   addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
-  fetchDishes: () => { dispatch(fetchDishes)}
+  fetchDishes: () => { dispatch(fetchDishes())}
 });
 
 const mapStateToProps = state => {
