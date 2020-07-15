@@ -5,7 +5,7 @@ import {Loading} from './LoadingComponent';
 function RenderCard({item, isLoading, errMess})
 {
     console.log(isLoading);
-    if(isLoading === true)
+    if(isLoading)
     {
         return (
             <Loading />
@@ -19,6 +19,7 @@ function RenderCard({item, isLoading, errMess})
     }
     else
     {
+        console.log("Reached");
         return(
             <Card>
                 <CardImg src={item.image} alt={item.name} />
