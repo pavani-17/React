@@ -4,6 +4,7 @@ import {LocalForm, Control, Errors} from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import {Loading} from './LoadingComponent';
 import {baseUrl} from '../shared/baseUrl';
+import {FadeTransform, Fade, Stagger} from 'react-animation-components';
 
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => !(val) || (val.length >= len);
@@ -97,13 +98,17 @@ function renderDish(dish)
     if(dish!=null)
     {
         return (
-            <Card>
-                <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
-                <CardBody>
-                <CardTitle>{dish.name}</CardTitle>
-                <CardText>{dish.description}</CardText>
-                </CardBody>
-            </Card>
+            <FadeTransform in transformProps= {{
+                exitTransform : 'scale(0.5) translateY(-50%)'}}>
+                <Card>
+                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+                    <CardBody>
+                    <CardTitle>{dish.name}</CardTitle>
+                    <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </FadeTransform>
+            
         );
     }
     else
@@ -125,14 +130,17 @@ function RenderComments({comments, postComment, dishId})
                 const k = p.split(" ");
                 return (
                     <div className="container">
-                    <ul key={comment.id} className="list-unstyled">
-                        <div className="row">
-                            <p>{comment.comment}</p>
-                        </div>
-                        <div className="row">
-                            <p>--{comment.author}, {k[1]} {k[2]}, {k[3]} </p>
-                        </div>
-                    </ul>
+                        <Fade in>
+                            <ul key={comment.id} className="list-unstyled">
+                                <div className="row">
+                                    <p>{comment.comment}</p>
+                                </div>
+                                <div className="row">
+                                    <p>--{comment.author}, {k[1]} {k[2]}, {k[3]} </p>
+                                </div>
+                            </ul>
+                        </Fade>
+                    
                     </div>
                 )
             }
@@ -140,7 +148,10 @@ function RenderComments({comments, postComment, dishId})
         return (
             <div>
                 <h4>Comments</h4>
-                {a}
+                <Stagger in>
+                    {a}
+                </Stagger>
+
                 <CommentForm dishId={dishId} postComment={postComment}/>
             </div>
         );
