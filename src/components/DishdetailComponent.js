@@ -129,8 +129,8 @@ function RenderComments({comments, postComment, dishId})
                 var p = Date(comment.date);
                 const k = p.split(" ");
                 return (
-                    <div className="container">
-                        <Fade in>
+                    <Fade in>
+                        <div className="container">    
                             <ul key={comment.id} className="list-unstyled">
                                 <div className="row">
                                     <p>{comment.comment}</p>
@@ -139,9 +139,10 @@ function RenderComments({comments, postComment, dishId})
                                     <p>--{comment.author}, {k[1]} {k[2]}, {k[3]} </p>
                                 </div>
                             </ul>
-                        </Fade>
+                        </div>
+                    </Fade>
                     
-                    </div>
+                    
                 )
             }
         );
@@ -151,7 +152,6 @@ function RenderComments({comments, postComment, dishId})
                 <Stagger in>
                     {a}
                 </Stagger>
-
                 <CommentForm dishId={dishId} postComment={postComment}/>
             </div>
         );
