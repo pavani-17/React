@@ -72,7 +72,8 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
       error => {
             throw error;
       })
-    .then(response => console.log(response.json()))
+    .then(response => response.json())
+    .then(response => alert("Current status is: "+JSON.stringify(response)))
     .catch(error =>  { console.log('post feedback', error.message); alert('Your feedback could not be posted\nError: '+error.message); });
 };
 
